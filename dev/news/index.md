@@ -13,8 +13,10 @@ CRAN release: 2026-01-10
 
 ### Notas
 
-- As funções de padronização foram reescritas em Rust, tornando-as muito
-  mais rápidas.
+- As funções de padronização foram [reescritas em
+  Rust](https://github.com/ipeaGIT/enderecobr_rs), tornando-as muito
+  mais rápidas. Ganho de performance documentado
+  [aqui](https://github.com/ipeaGIT/enderecobr/issues/65#issuecomment-3738525612).
 
 ## enderecobr 0.4.1
 
