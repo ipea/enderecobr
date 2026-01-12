@@ -1,5 +1,21 @@
 # Changelog
 
+## enderecobr 0.5.0
+
+CRAN release: 2026-01-10
+
+### Novas funcionalidades
+
+- Novas regras foram adicionadas às funções
+  [`padronizar_bairros()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_bairros.md)
+  e
+  [`padronizar_logradouros()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_logradouros.md).
+
+### Notas
+
+- As funções de padronização foram reescritas em Rust, tornando-as muito
+  mais rápidas.
+
 ## enderecobr 0.4.1
 
 CRAN release: 2025-02-18
