@@ -1,9 +1,9 @@
-pandoc: 3.1.11
+pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   enderecobr: enderecobr.html
-last_built: 2026-01-12T13:26Z
+last_built: 2026-07-04T17:08Z
 urls:
   reference: https://ipeagit.github.io/enderecobr/reference
   article: https://ipeagit.github.io/enderecobr/articles

@@ -10,6 +10,7 @@ suporte a correspondências probabilísticas entre strings.
 A última versão estável pode ser baixada do CRAN com o comando a seguir:
 
 ``` r
+
 install.packages("enderecobr")
 ```
 
@@ -17,6 +18,7 @@ Caso prefira, a versão em desenvolvimento também pode ser usada. Para
 isso, use o seguinte comando:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("ipeaGIT/enderecobr")
 ```
@@ -37,6 +39,7 @@ que podem compor um endereço. Para isso, ela recebe um dataframe e a
 correspondência entre suas colunas e os campos a serem padronizados:
 
 ``` r
+
 library(enderecobr)
 
 enderecos <- data.frame(
@@ -111,6 +114,7 @@ situação. Os exemplos a seguir demonstram esses parâmetros
 detalhadamente:
 
 ``` r
+
 campos <- correspondencia_campos(
   numero = "nroLogradouro",
   estado = "uf_dom"
@@ -158,6 +162,7 @@ padronização e seus respectivos resultados são preservados. O bloco
 abaixo demonstra essa funcionalidade:
 
 ``` r
+
 campos <- correspondencia_campos(
   tipo_de_logradouro = "tipo",
   logradouro = "logradouro"
@@ -187,6 +192,7 @@ deve ser interpretado como o *nome* do logradouro. A seguir,
 demonstramos essa funcionalidade:
 
 ``` r
+
 enderecos <- data.frame(
   tipo = "r",
   logradouro = "ns sra da piedade",
@@ -222,6 +228,7 @@ verificação não é feita; se for `TRUE`, a verificação é realizada e
 valores duplicados são removidos, como apresentado a seguir:
 
 ``` r
+
 enderecos <- data.frame(
   tipo = "r",
   logradouro = "r ns sra da piedade",
@@ -260,6 +267,7 @@ número) e a correspondência entre suas colunas e os campos a serem
 padronizados:
 
 ``` r
+
 campos <- correspondencia_logradouro(
   tipo_de_logradouro = "tipo",
   nome_do_logradouro = "logradouro",
@@ -318,6 +326,7 @@ espaços em excesso entre palavras. O código abaixo apresenta exemplos de
 aplicação da função.
 
 ``` r
+
 estados <- c("21", " 21", "MA", " MA ", "ma", "MARANHÃO")
 padronizar_estados(estados)
 #> [1] "MARANHAO" "MARANHAO" "MARANHAO" "MARANHAO" "MARANHAO" "MARANHAO"
@@ -342,6 +351,7 @@ nos nomes dos municípios (e.g. Moji Mirim -\> Mogi Mirim, Parati -\>
 Paraty).
 
 ``` r
+
 municipios <- c(
   "3304557", "003304557", " 3304557 ", "RIO DE JANEIRO", "rio de janeiro",
   "SÃO PAULO"
@@ -371,6 +381,7 @@ abaixo mostra algumas das muitas abreviações usualmente empregadas no
 preenchimento de endereços.
 
 ``` r
+
 bairros <- c(
   "PRQ IND",
   "NSA SEN DE FATIMA",
@@ -401,6 +412,7 @@ CEPs, como no caso de strings contendo caracteres não numéricos e de
 strings com caracteres em excesso.
 
 ``` r
+
 ceps <- c("22290-140", "22.290-140", "22290 140", "22290140")
 padronizar_ceps(ceps)
 #> [1] "22290-140" "22290-140" "22290-140" "22290-140"
@@ -431,6 +443,7 @@ conversão para caixa alta, remoção de espaços em excesso e antes e
 depois das strings, etc.
 
 ``` r
+
 logradouros <- c(
   "r. gen.. glicério, 137",
   "cond pres j. k., qd 05 lt 02 1",
@@ -456,6 +469,7 @@ puderem ser adequadamente convertidos para inteiro também são
 substituídos por `NA`, o que é sinalizado por um warning.
 
 ``` r
+
 numeros <- c("0210", "001", "1", "S N", "S/N", "SN", "0180  0181")
 padronizar_numeros(numeros)
 #> [1] "210"     "1"       "1"       "S/N"     "S/N"     "S/N"     "180 181"
@@ -481,6 +495,7 @@ Fora o tratamento usual dado a strings, a função também expande
 abreviações frequentemente observadas no campo de tipo de logradouro.
 
 ``` r
+
 tipos <- c("r", "R.", "AVN", "AVE", "JDM", "QD")
 padronizar_tipos_de_logradouro(tipos)
 #> [1] "RUA"     "RUA"     "AVENIDA" "AVENIDA" "JARDIM"  "QUADRA"
@@ -494,6 +509,7 @@ observações frequentemente observados na especificação de complementos
 de logradouros.
 
 ``` r
+
 complementos <- c("QD1 LT2 CS3", "APTO. 405", "PRX CX POST 450")
 padronizar_complementos(complementos)
 #> [1] "QUADRA 1 LOTE 2 CASA 3"   "APARTAMENTO 405"         
@@ -507,6 +523,7 @@ ser controlado pela opção `enderecobr.verbose`, que recebe os valores
 `"quiet"` ou `"verbose"`, como demonstrado a seguir:
 
 ``` r
+
 campos <- correspondencia_logradouro(
   nome_do_logradouro = "logradouro",
   numero = "nroLogradouro"
