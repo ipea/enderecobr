@@ -11,11 +11,11 @@ supporting probabilistic matches between strings.)
 
 Useful links:
 
-- <https://github.com/ipeaGIT/enderecobr>
+- <https://github.com/ipea/enderecobr>
 
 - <https://ipeagit.github.io/enderecobr/>
 
-- Report bugs at <https://github.com/ipeaGIT/enderecobr/issues>
+- Report bugs at <https://github.com/ipea/enderecobr/issues>
 
 ## Author
 
@@ -23,6 +23,9 @@ Useful links:
 ([ORCID](https://orcid.org/0000-0001-8066-1105))
 
 Authors:
+
+- Daniel Herszenhut <dhersz@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-8066-1105))
 
 - Rafael H. M. Pereira ([ORCID](https://orcid.org/0000-0003-2125-7465))
 
