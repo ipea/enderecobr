@@ -20,7 +20,7 @@
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ipeaGIT/enderecobr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ipea/enderecobr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch"><li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
@@ -35,9 +35,24 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/ipeaGIT/enderecobr/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/ipea/enderecobr/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.0.9000" id="enderecobr-0509000-versão-em-desenvolvimento">enderecobr 0.5.0.9000 (versão em desenvolvimento)<a class="anchor" aria-label="anchor" href="#enderecobr-0509000-vers%C3%A3o-em-desenvolvimento"></a></h2>
+<div class="section level3">
+<h3 id="alterações-e-correções-upstream-no-enderecobr_rs-0-5-0-9000">Alterações e Correções upstream no enderecobr_rs<a class="anchor" aria-label="anchor" href="#altera%C3%A7%C3%B5es-e-corre%C3%A7%C3%B5es-upstream-no-enderecobr_rs-0-5-0-9000"></a></h3>
+</div>
+<div class="section level3">
+<h3 id="correção-de-bugs-0-5-0-9000">Correção de bugs<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%A3o-de-bugs-0-5-0-9000"></a></h3>
+</div>
+<div class="section level3">
+<h3 id="novas-funcionalidades-0-5-0-9000">Novas funcionalidades<a class="anchor" aria-label="anchor" href="#novas-funcionalidades-0-5-0-9000"></a></h3>
+</div>
+<div class="section level3">
+<h3 id="notas-0-5-0-9000">Notas<a class="anchor" aria-label="anchor" href="#notas-0-5-0-9000"></a></h3>
+</div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="enderecobr-050">enderecobr 0.5.0<a class="anchor" aria-label="anchor" href="#enderecobr-050"></a></h2><p class="text-muted">CRAN release: 2026-01-10</p>
 <div class="section level3">
@@ -46,14 +61,14 @@
 </ul></div>
 <div class="section level3">
 <h3 id="notas-0-5-0">Notas<a class="anchor" aria-label="anchor" href="#notas-0-5-0"></a></h3>
-<ul><li>As funções de padronização foram <a href="https://github.com/ipeaGIT/enderecobr_rs" class="external-link">reescritas em Rust</a>, tornando-as muito mais rápidas. Ganho de performance documentado <a href="https://github.com/ipeaGIT/enderecobr/issues/65#issuecomment-3738525612" class="external-link">aqui</a>.</li>
+<ul><li>As funções de padronização foram <a href="https://github.com/ipea/enderecobr_rs" class="external-link">reescritas em Rust</a>, tornando-as muito mais rápidas. Ganho de performance documentado <a href="https://github.com/ipea/enderecobr/issues/65#issuecomment-3738525612" class="external-link">aqui</a>.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="enderecobr-041">enderecobr 0.4.1<a class="anchor" aria-label="anchor" href="#enderecobr-041"></a></h2><p class="text-muted">CRAN release: 2025-02-18</p>
 <div class="section level3">
 <h3 id="correção-de-bugs-0-4-1">Correção de bugs<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%A3o-de-bugs-0-4-1"></a></h3>
-<ul><li>Corrigido bug na <code><a href="../reference/padronizar_enderecos.html">padronizar_enderecos()</a></code> (quando chamada via <code><a href="../reference/padronizar_enderecos.html">enderecobr::padronizar_enderecos()</a></code>) em que a função resultava num erro quando, internamente, a <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> lançava um warning. Relacionado ao <a href="https://github.com/ipeagit/enderecobr/issues/38" class="external-link">issue </a><a href="https://github.com/ipeaGIT/enderecobr/issues/38" class="external-link">#38</a>.</li>
+<ul><li>Corrigido bug na <code><a href="../reference/padronizar_enderecos.html">padronizar_enderecos()</a></code> (quando chamada via <code><a href="../reference/padronizar_enderecos.html">enderecobr::padronizar_enderecos()</a></code>) em que a função resultava num erro quando, internamente, a <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> lançava um warning. Relacionado ao <a href="https://github.com/ipea/enderecobr/issues/38" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/38" class="external-link">#38</a>.</li>
 <li>Corrigido bug na <code><a href="../reference/padronizar_enderecos.html">padronizar_enderecos()</a></code> (quando chamada via <code><a href="../reference/padronizar_enderecos.html">enderecobr::padronizar_enderecos()</a></code>) em que a função resultava num erro quando, internamente, a <code><a href="../reference/padronizar_ceps.html">padronizar_ceps()</a></code> identificava um CEP inválido.</li>
 </ul></div>
 </div>
@@ -61,8 +76,8 @@
 <h2 class="pkg-version" data-toc-text="0.4.0" id="enderecobr-040">enderecobr 0.4.0<a class="anchor" aria-label="anchor" href="#enderecobr-040"></a></h2><p class="text-muted">CRAN release: 2025-01-14</p>
 <div class="section level3">
 <h3 id="correção-de-bugs-0-4-0">Correção de bugs<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%A3o-de-bugs-0-4-0"></a></h3>
-<ul><li>Corrigido bug na <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> em que zeros após o separador de milhares eram suprimidos. Por exemplo, “1.028” virava “1.28”. Relacionado ao <a href="https://github.com/ipeaGIT/enderecobr/issues/37" class="external-link">issue </a><a href="https://github.com/ipeaGIT/enderecobr/issues/37" class="external-link">#37</a>.</li>
-<li>Corrigido bug na <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> em que zeros de vetores numéricos não eram adequadamente transformados em “S/N”. Relacionado ao <a href="https://github.com/ipeaGIT/enderecobr/issues/38" class="external-link">issue </a><a href="https://github.com/ipeaGIT/enderecobr/issues/38" class="external-link">#38</a>.</li>
+<ul><li>Corrigido bug na <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> em que zeros após o separador de milhares eram suprimidos. Por exemplo, “1.028” virava “1.28”. Relacionado ao <a href="https://github.com/ipea/enderecobr/issues/37" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/37" class="external-link">#37</a>.</li>
+<li>Corrigido bug na <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> em que zeros de vetores numéricos não eram adequadamente transformados em “S/N”. Relacionado ao <a href="https://github.com/ipea/enderecobr/issues/38" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/38" class="external-link">#38</a>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="novas-funcionalidades-0-4-0">Novas funcionalidades<a class="anchor" aria-label="anchor" href="#novas-funcionalidades-0-4-0"></a></h3>
@@ -90,7 +105,7 @@
 <div class="section level3">
 <h3 id="correção-de-bugs-0-2-0">Correção de bugs<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%A3o-de-bugs-0-2-0"></a></h3>
 <ul><li>Ajuste na exportação dos dados dos códigos de estados e municípios, que impedia que o pacote fosse usado sem ser explicitamente carregado com <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(enderecopadrao)</a></code>.</li>
-<li>Ajuste na <code><a href="../reference/padronizar_estados.html">padronizar_estados()</a></code>, evitando casos em que um valor padronizado poderia acabar sendo erroneamente atribuído a um estado de input (relacionado ao <a href="https://github.com/ipeaGIT/enderecobr/issues/26" class="external-link">issue </a><a href="https://github.com/ipeaGIT/enderecobr/issues/26" class="external-link">#26</a>).</li>
+<li>Ajuste na <code><a href="../reference/padronizar_estados.html">padronizar_estados()</a></code>, evitando casos em que um valor padronizado poderia acabar sendo erroneamente atribuído a um estado de input (relacionado ao <a href="https://github.com/ipea/enderecobr/issues/26" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/26" class="external-link">#26</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="novas-funcionalidades-0-2-0">Novas funcionalidades<a class="anchor" aria-label="anchor" href="#novas-funcionalidades-0-2-0"></a></h3>
@@ -102,7 +117,7 @@
 <div class="section level3">
 <h3 id="notas-0-2-0">Notas<a class="anchor" aria-label="anchor" href="#notas-0-2-0"></a></h3>
 <ul><li>Primeira versão no CRAN.</li>
-<li>Mudança do nome do pacote, de <code>{enderecopadrao}</code> para <a href="https://github.com/ipeaGIT/enderecobr" class="external-link">enderecobr</a>.</li>
+<li>Mudança do nome do pacote, de <code>{enderecopadrao}</code> para <a href="https://github.com/ipea/enderecobr" class="external-link">enderecobr</a>.</li>
 <li>Diversos ajustes na documentação.</li>
 </ul></div>
 </div>

@@ -1,5 +1,15 @@
 # Changelog
 
+## enderecobr 0.5.0.9000 (versão em desenvolvimento)
+
+### Alterações e Correções upstream no enderecobr_rs
+
+### Correção de bugs
+
+### Novas funcionalidades
+
+### Notas
+
 ## enderecobr 0.5.0
 
 CRAN release: 2026-01-10
@@ -14,9 +24,9 @@ CRAN release: 2026-01-10
 ### Notas
 
 - As funções de padronização foram [reescritas em
-  Rust](https://github.com/ipeaGIT/enderecobr_rs), tornando-as muito
-  mais rápidas. Ganho de performance documentado
-  [aqui](https://github.com/ipeaGIT/enderecobr/issues/65#issuecomment-3738525612).
+  Rust](https://github.com/ipea/enderecobr_rs), tornando-as muito mais
+  rápidas. Ganho de performance documentado
+  [aqui](https://github.com/ipea/enderecobr/issues/65#issuecomment-3738525612).
 
 ## enderecobr 0.4.1
 
@@ -31,8 +41,8 @@ CRAN release: 2025-02-18
   em que a função resultava num erro quando, internamente, a
   [`padronizar_numeros()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_numeros.md)
   lançava um warning. Relacionado ao
-  [issue](https://github.com/ipeagit/enderecobr/issues/38)
-  [\#38](https://github.com/ipeaGIT/enderecobr/issues/38).
+  [issue](https://github.com/ipea/enderecobr/issues/38)
+  [\#38](https://github.com/ipea/enderecobr/issues/38).
 - Corrigido bug na
   [`padronizar_enderecos()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_enderecos.md)
   (quando chamada via
@@ -51,14 +61,14 @@ CRAN release: 2025-01-14
   [`padronizar_numeros()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_numeros.md)
   em que zeros após o separador de milhares eram suprimidos. Por
   exemplo, “1.028” virava “1.28”. Relacionado ao
-  [issue](https://github.com/ipeaGIT/enderecobr/issues/37)
-  [\#37](https://github.com/ipeaGIT/enderecobr/issues/37).
+  [issue](https://github.com/ipea/enderecobr/issues/37)
+  [\#37](https://github.com/ipea/enderecobr/issues/37).
 - Corrigido bug na
   [`padronizar_numeros()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_numeros.md)
   em que zeros de vetores numéricos não eram adequadamente transformados
   em “S/N”. Relacionado ao
-  [issue](https://github.com/ipeaGIT/enderecobr/issues/38)
-  [\#38](https://github.com/ipeaGIT/enderecobr/issues/38).
+  [issue](https://github.com/ipea/enderecobr/issues/38)
+  [\#38](https://github.com/ipea/enderecobr/issues/38).
 
 ### Novas funcionalidades
 
@@ -107,8 +117,8 @@ CRAN release: 2024-10-28
   [`padronizar_estados()`](https://ipeagit.github.io/enderecobr/dev/reference/padronizar_estados.md),
   evitando casos em que um valor padronizado poderia acabar sendo
   erroneamente atribuído a um estado de input (relacionado ao
-  [issue](https://github.com/ipeaGIT/enderecobr/issues/26)
-  [\#26](https://github.com/ipeaGIT/enderecobr/issues/26)).
+  [issue](https://github.com/ipea/enderecobr/issues/26)
+  [\#26](https://github.com/ipea/enderecobr/issues/26)).
 
 ### Novas funcionalidades
 
@@ -129,5 +139,5 @@ CRAN release: 2024-10-28
 
 - Primeira versão no CRAN.
 - Mudança do nome do pacote, de `{enderecopadrao}` para
-  [enderecobr](https://github.com/ipeaGIT/enderecobr).
+  [enderecobr](https://github.com/ipea/enderecobr).
 - Diversos ajustes na documentação.

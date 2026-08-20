@@ -20,7 +20,7 @@ isso, use o seguinte comando:
 ``` r
 
 # install.packages("remotes")
-remotes::install_github("ipeaGIT/enderecobr")
+remotes::install_github("ipea/enderecobr")
 ```
 
 ## Utilização

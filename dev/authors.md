@@ -16,17 +16,17 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/ipeaGIT/enderecobr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/ipea/enderecobr/blob/main/DESCRIPTION)
 
 Herszenhut D, Pereira R, Mation L, Garcia de Almeida G (2026).
 *enderecobr: Padronizador de Endereços Brasileiros (Brazilian Addresses
 Standardizer)*. R package version 0.5.0.9000,
-<https://github.com/ipeaGIT/enderecobr>.
+<https://github.com/ipea/enderecobr>.
 
     @Manual{,
       title = {enderecobr: Padronizador de Endereços Brasileiros (Brazilian Addresses Standardizer)},
       author = {Daniel Herszenhut and Rafael H. M. Pereira and Lucas Mation and Gabriel {Garcia de Almeida}},
       year = {2026},
       note = {R package version 0.5.0.9000},
-      url = {https://github.com/ipeaGIT/enderecobr},
+      url = {https://github.com/ipea/enderecobr},
     }
