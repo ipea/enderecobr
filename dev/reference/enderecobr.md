@@ -13,7 +13,7 @@ Useful links:
 
 - <https://github.com/ipea/enderecobr>
 
-- <https://ipeagit.github.io/enderecobr/>
+- <https://ipea.github.io/enderecobr/>
 
 - Report bugs at <https://github.com/ipea/enderecobr/issues>
 
