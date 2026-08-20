@@ -41,17 +41,24 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0.9000" id="enderecobr-0509000-versão-em-desenvolvimento">enderecobr 0.5.0.9000 (versão em desenvolvimento)<a class="anchor" aria-label="anchor" href="#enderecobr-0509000-vers%C3%A3o-em-desenvolvimento"></a></h2>
 <div class="section level3">
-<h3 id="alterações-e-correções-upstream-no-enderecobr_rs-0-5-0-9000">Alterações e Correções upstream no enderecobr_rs<a class="anchor" aria-label="anchor" href="#altera%C3%A7%C3%B5es-e-corre%C3%A7%C3%B5es-upstream-no-enderecobr_rs-0-5-0-9000"></a></h3>
-</div>
-<div class="section level3">
-<h3 id="correção-de-bugs-0-5-0-9000">Correção de bugs<a class="anchor" aria-label="anchor" href="#corre%C3%A7%C3%A3o-de-bugs-0-5-0-9000"></a></h3>
-</div>
-<div class="section level3">
-<h3 id="novas-funcionalidades-0-5-0-9000">Novas funcionalidades<a class="anchor" aria-label="anchor" href="#novas-funcionalidades-0-5-0-9000"></a></h3>
-</div>
-<div class="section level3">
 <h3 id="notas-0-5-0-9000">Notas<a class="anchor" aria-label="anchor" href="#notas-0-5-0-9000"></a></h3>
-</div>
+<ul><li>Repositório migrado de <code>ipeaGIT/enderecobr</code> para <code>ipea/enderecobr</code> (<a href="https://github.com/ipea/enderecobr/issues/67" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/67" class="external-link">#67</a>).</li>
+<li>Atualização do pacote para utilizar a nova crate v0.2.0 do <a href="https://github.com/ipea/enderecobr_rs" class="external-link">enderecobr_rs</a>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="adições-e-mudanças-de-padronização-0-5-0-9000">Adições e mudanças de padronização<a class="anchor" aria-label="anchor" href="#adi%C3%A7%C3%B5es-e-mudan%C3%A7as-de-padroniza%C3%A7%C3%A3o-0-5-0-9000"></a></h3>
+<ul><li>Novos casos de NA e de “S/N” passaram a ser reconhecidos na padronização de números (<a href="https://github.com/ipea/enderecobr/issues/68" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/68" class="external-link">#68</a>).</li>
+<li>A <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> agora trata números negativos (<a href="https://github.com/ipea/enderecobr/issues/55" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/55" class="external-link">#55</a>).</li>
+<li>A <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> agora reconhece “S/NR” como “S/N” (<a href="https://github.com/ipea/enderecobr/issues/45" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/45" class="external-link">#45</a>).</li>
+<li>A <code><a href="../reference/padronizar_numeros.html">padronizar_numeros()</a></code> agora trata casos em que “NO” é usado no lugar de “nº”, como em “LOTE NO 07” (<a href="https://github.com/ipea/enderecobr/issues/48" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/48" class="external-link">#48</a>).</li>
+<li>A <code><a href="../reference/padronizar_ceps.html">padronizar_ceps()</a></code> agora corrige a presença de caracteres especiais no CEP (<a href="https://github.com/ipea/enderecobr/issues/53" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/53" class="external-link">#53</a>).</li>
+<li>Na padronização de logradouros e campos afins, barras invertidas (<code>\</code>) agora são convertidas em barras (<code>/</code>) (<a href="https://github.com/ipea/enderecobr/issues/43" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/43" class="external-link">#43</a>).</li>
+<li>Corrigida a falta de espaço no número de rodovias, como em “RODOVIA RJ216” e “RODOVIA BR393” (<a href="https://github.com/ipea/enderecobr/issues/47" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/47" class="external-link">#47</a>).</li>
+<li>Corrigidas grafias erradas de “Campos Elíseos” (<a href="https://github.com/ipea/enderecobr/issues/24" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/24" class="external-link">#24</a>) e variações incorretas de “presidente”, como “PREZIDENTE”, “PRSIDENTE” e “PESIDENTE” (<a href="https://github.com/ipea/enderecobr/issues/19" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/19" class="external-link">#19</a>).</li>
+<li>A <code><a href="../reference/padronizar_estados.html">padronizar_estados()</a></code> agora sinaliza erros em inputs de estado inválidos (<a href="https://github.com/ipea/enderecobr/issues/46" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/46" class="external-link">#46</a>).</li>
+<li>Ajustes no tratamento de municípios de mesmo nome e na documentação do <code>cod_municipio</code> (<a href="https://github.com/ipea/enderecobr/issues/7" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/7" class="external-link">#7</a>).</li>
+<li>Incluído o município de “Boa Esperança do Norte” na tabela de códigos municipais (<a href="https://github.com/ipea/enderecobr_rs/issues/45" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/45" class="external-link">#45</a>).</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="enderecobr-050">enderecobr 0.5.0<a class="anchor" aria-label="anchor" href="#enderecobr-050"></a></h2><p class="text-muted">CRAN release: 2026-01-10</p>
