@@ -29,5 +29,5 @@
 padronizar_tipos_de_logradouro <- function(tipos) {
   checkmate::assert_character(tipos)
 
-  padronizar_tipos_de_logradouros_rs(tipos)
+  padronizar_tipos_de_logradouros_rs(enc2utf8(tipos))
 }

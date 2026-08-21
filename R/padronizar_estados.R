@@ -46,5 +46,5 @@ padronizar_estados <- function(estados, formato = "por_extenso") {
     combine = "and"
   )
 
-  padronizar_estados_rs(as.character(estados), formato = formato)
+  padronizar_estados_rs(enc2utf8(as.character(estados)), formato = formato)
 }

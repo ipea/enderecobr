@@ -3,15 +3,20 @@ name = 'enderecobr'
 publish = false
 version = '0.1.0'
 edition = '2021'
-rust-version = '1.81'
+rust-version = '1.65'
 
 [lib]
-crate-type = [ 'staticlib' ]
+crate-type = [ "rlib", "staticlib" ]
 name = 'enderecobr'
+
+[[bin]]
+name = 'document'
+path = 'document.rs'
 
 [dependencies]
 enderecobr_rs = "0.2.0"
-extendr-api = '0.8.2'
+extendr-api = '0.9.0'
+rustc-hash = "2.1.1"
 
 [profile.release]
 lto = true

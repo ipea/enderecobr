@@ -59,7 +59,7 @@ padronizar_numeros <- function(numeros, formato = "character") {
     return(numeros_padrao)
   }
 
-  numeros_padrao <- padronizar_numeros_rs(numeros)
+  numeros_padrao <- padronizar_numeros_rs(enc2utf8(numeros))
 
   if (formato == "character") {
     numeros_padrao[is.na(numeros_padrao) | numeros_padrao == ""] <- "S/N"

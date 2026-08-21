@@ -28,6 +28,5 @@
 #' @export
 padronizar_complementos <- function(complementos) {
   checkmate::assert_character(complementos)
-
-  padronizar_complementos_rs(complementos)
+  padronizar_complementos_rs(enc2utf8(complementos))
 }

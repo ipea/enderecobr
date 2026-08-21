@@ -1,10 +1,14 @@
 use enderecobr_rs::{
+    is_dado_faltante,
+    metaphone::metaphone,
+    numero_extenso::{padronizar_numero_romano_por_extenso, padronizar_numeros_por_extenso},
     padronizar_bairros, padronizar_cep, padronizar_cep_numerico, padronizar_complementos,
     padronizar_estados_para_nome, padronizar_estados_para_sigla, padronizar_logradouros,
     padronizar_municipios, padronizar_numeros, padronizar_tipo_logradouro,
 };
 use extendr_api::prelude::*;
 use extendr_api::ToVectorValue;
+use rustc_hash::FxHashMap;
 use std::collections::HashMap;
 
 /// Função utilitária interna usada para fazer o tratamento em comum
@@ -13,13 +17,14 @@ fn mapear_com_cache<F>(x: Strings, fun: F) -> Strings
 where
     F: Fn(&str) -> String,
 {
-    let mut cache = HashMap::<&str, Rstr>::new();
+    // Hashmap não padrão, porém mais performático.
+    let mut cache = FxHashMap::<&str, Rstr>::default();
 
     x.iter()
         .map(|xi| match xi.is_na() {
             true => Rstr::na(),
             false => {
-                let chave = xi.as_str();
+                let chave = xi.as_ref();
                 if let Some(valor_cacheado) = cache.get(&chave) {
                     return valor_cacheado.clone();
                 }
@@ -35,6 +40,35 @@ where
         })
         .collect::<Strings>()
 }
+
+// Utilitários
+
+#[extendr]
+pub fn dado_faltante_rs(x: Strings) -> Logicals {
+    x.iter()
+        .map(|xi| match xi.is_na() {
+            true => true,
+            false => is_dado_faltante(xi.as_ref()),
+        })
+        .collect()
+}
+
+#[extendr]
+pub fn padronizar_metaphone_rs(x: Strings) -> Strings {
+    mapear_com_cache(x, metaphone)
+}
+
+#[extendr]
+pub fn padronizar_numeros_por_extenso_rs(x: Strings) -> Strings {
+    mapear_com_cache(x, |xi| padronizar_numeros_por_extenso(xi).to_string())
+}
+
+#[extendr]
+pub fn padronizar_numeros_romanos_por_extenso_rs(x: Strings) -> Strings {
+    mapear_com_cache(x, |xi| padronizar_numero_romano_por_extenso(xi).to_string())
+}
+
+// Principais
 
 #[extendr]
 pub fn padronizar_bairros_rs(x: Strings) -> Strings {
@@ -92,7 +126,10 @@ pub fn padronizar_numeros_rs(x: Strings) -> Strings {
 // https://github.com/extendr/extendr/pull/952/files
 
 #[extendr]
-pub fn padronizar_estados_rs(x: Strings, #[default = "'por_extenso'"] formato: Robj) -> Strings {
+pub fn padronizar_estados_rs(
+    x: Strings,
+    #[extendr(default = "'por_extenso'")] formato: Robj,
+) -> Strings {
     if formato.as_str() == Some("sigla") {
         return mapear_com_cache(x, |y| padronizar_estados_para_sigla(y).to_string());
     } else {
@@ -111,7 +148,7 @@ pub struct Padronizador {
 // Não sei como faria um construtor em R...
 #[extendr]
 pub fn novo_padronizador(
-    #[default = "list()"] pares_subst: HashMap<&str, Strings>,
+    #[extendr(default = "list()")] pares_subst: HashMap<&str, Strings>,
 ) -> Padronizador {
     let mut padr = Padronizador {
         interno: enderecobr_rs::Padronizador::default(),
@@ -137,7 +174,7 @@ impl Padronizador {
             .iter()
             .map(|xi| match xi.is_na() {
                 true => panic!("'regexp' não podem ser NA"),
-                false => xi.as_str(),
+                false => xi.as_ref(),
             })
             .collect();
 
@@ -148,7 +185,7 @@ impl Padronizador {
             .iter()
             .map(|xi| match xi.is_na() {
                 true => "",
-                false => xi.as_str(),
+                false => xi.as_ref(),
             })
             .collect();
 
@@ -158,7 +195,7 @@ impl Padronizador {
                 .iter()
                 .map(|xi| match xi.is_na() {
                     true => None,
-                    false => Some(xi.as_str()),
+                    false => Some(xi.as_ref()),
                 })
                 .collect()
         } else {
@@ -196,12 +233,12 @@ impl Padronizador {
             .iter()
             .map(|opt| match opt {
                 None => Rstr::na(),
-                Some(val) => Rstr::from_string(val),
+                Some(val) => Rstr::from(*val),
             })
             .collect();
 
         res.insert("ignorar", ignorar_strings);
-        List::from_hashmap(res).unwrap()
+        List::try_from(res).unwrap()
     }
 }
 
@@ -245,6 +282,10 @@ fn obter_padronizador_tipos_logradouros() -> Padronizador {
 
 extendr_module! {
     mod enderecobr;
+    fn dado_faltante_rs;
+    fn padronizar_metaphone_rs;
+    fn padronizar_numeros_por_extenso_rs;
+    fn padronizar_numeros_romanos_por_extenso_rs;
     fn padronizar_bairros_rs;
     fn padronizar_complementos_rs;
     fn padronizar_logradouros_rs;

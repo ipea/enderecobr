@@ -44,5 +44,5 @@ padronizar_municipios <- function(municipios) {
     combine = "or"
   )
 
-  padronizar_municipios_rs(as.character(municipios))
+  padronizar_municipios_rs(enc2utf8(as.character(municipios)))
 }

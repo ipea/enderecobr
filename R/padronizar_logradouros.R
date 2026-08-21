@@ -30,5 +30,5 @@
 padronizar_logradouros <- function(logradouros) {
   checkmate::assert_character(logradouros)
 
-  padronizar_logradouros_rs(logradouros)
+  padronizar_logradouros_rs(enc2utf8(logradouros))
 }
