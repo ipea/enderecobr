@@ -2,6 +2,8 @@
 
 ## enderecobr 0.6.1
 
+CRAN release: 2026-09-11
+
 ### Notas
 
 - Corrigida falha de instalação nas plataformas Fedora do CRAN

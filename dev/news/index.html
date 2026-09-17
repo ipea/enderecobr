@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">enderecobr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.6.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.6.1.0001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.1" id="enderecobr-061">enderecobr 0.6.1<a class="anchor" aria-label="anchor" href="#enderecobr-061"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.6.1" id="enderecobr-061">enderecobr 0.6.1<a class="anchor" aria-label="anchor" href="#enderecobr-061"></a></h2><p class="text-muted">CRAN release: 2026-09-11</p>
 <div class="section level3">
 <h3 id="notas-0-6-1">Notas<a class="anchor" aria-label="anchor" href="#notas-0-6-1"></a></h3>
 <ul><li>Corrigida falha de instalação nas plataformas Fedora do CRAN (<code>r-devel-linux-x86_64-fedora-clang</code> e <code>r-devel-linux-x86_64-fedora-gcc</code>): o gerador de wrappers do extendr (binário <code>document</code>) era compilado e executado durante a instalação e precisava linkar com a <code>libR.so</code>, inexistente em builds do R sem <code>--enable-R-shlib</code>. A geração de wrappers agora ocorre apenas durante <code>devtools::document()</code> (<a href="https://github.com/ipea/enderecobr/issues/70" class="external-link">issue </a><a href="https://github.com/ipea/enderecobr/issues/70" class="external-link">#70</a>).</li>

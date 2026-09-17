@@ -20,13 +20,13 @@ Source:
 
 Herszenhut D, Pereira R, Garcia de Almeida G, Mation L (2026).
 *enderecobr: Padronizador de Endereços Brasileiros (Brazilian Addresses
-Standardizer)*. R package version 0.6.0.9000,
+Standardizer)*. R package version 0.6.1.0001,
 <https://github.com/ipea/enderecobr>.
 
     @Manual{,
       title = {enderecobr: Padronizador de Endereços Brasileiros (Brazilian Addresses Standardizer)},
       author = {Daniel Herszenhut and Rafael H. M. Pereira and Gabriel {Garcia de Almeida} and Lucas Mation},
       year = {2026},
-      note = {R package version 0.6.0.9000},
+      note = {R package version 0.6.1.0001},
       url = {https://github.com/ipea/enderecobr},
     }
