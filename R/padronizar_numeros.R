@@ -59,7 +59,13 @@ padronizar_numeros <- function(numeros, formato = "character") {
     return(numeros_padrao)
   }
 
-  numeros_padrao <- padronizar_numeros_rs(enc2utf8(numeros))
+  dedup <- indices_de_unicos(numeros)
+
+  # reindexa antes do bloco abaixo: a conversao para integer precisa enxergar o
+  # vetor no comprimento original para emitir o warning nos mesmos casos
+  numeros_padrao <- padronizar_numeros_rs(
+    enc2utf8(dedup$unicos)
+  )[dedup$indices]
 
   if (formato == "character") {
     numeros_padrao[is.na(numeros_padrao) | numeros_padrao == ""] <- "S/N"

@@ -46,5 +46,10 @@ padronizar_estados <- function(estados, formato = "por_extenso") {
     combine = "and"
   )
 
-  padronizar_estados_rs(enc2utf8(as.character(estados)), formato = formato)
+  dedup <- indices_de_unicos(estados)
+
+  padronizar_estados_rs(
+    enc2utf8(as.character(dedup$unicos)),
+    formato = formato
+  )[dedup$indices]
 }

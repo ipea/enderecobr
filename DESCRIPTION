@@ -1,7 +1,7 @@
 Package: enderecobr
 Title: Padronizador de Endereços Brasileiros (Brazilian Addresses
     Standardizer)
-Version: 0.6.1
+Version: 0.6.1.0001
 Authors@R: c(
     person("Daniel", "Herszenhut", , "dhersz@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-8066-1105")),

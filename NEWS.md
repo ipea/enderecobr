@@ -1,3 +1,11 @@
+# enderecobr dev
+
+## Notas
+
+- Pequena melhora de performance na função `padronizar_enderecos()` para 
+bases  de dados grandes (acima de 1 milhão). Performance ganha por fazer 
+dedup  ainda dentro do R nos campos de estado, municipio e numero.
+
 # enderecobr 0.6.1
 
 ## Notas
