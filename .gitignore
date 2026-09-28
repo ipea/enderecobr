@@ -9,3 +9,4 @@ src/rust/vendor
 src/Makevars
 src/Makevars.win
 quality_reports/
+df_full_data.parquet
