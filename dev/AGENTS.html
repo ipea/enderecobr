@@ -95,7 +95,7 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">check</span><span class="op">(</span>args <span class="op">=</span> <span class="st">"--as-cran"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Test coverage</span></span>
-<span><span class="fu">covr</span><span class="fu">::</span><span class="fu"><a href="http://covr.r-lib.org/reference/package_coverage.html" class="external-link">package_coverage</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">covr</span><span class="fu">::</span><span class="fu">package_coverage</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Bump the enderecobr_rs dependency to pull in an upstream fix/feature</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="bu">cd</span> src/rust <span class="kw">&amp;&amp;</span> <span class="ex">cargo</span> update <span class="at">-p</span> enderecobr_rs <span class="at">--precise</span> X.Y.Z</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
