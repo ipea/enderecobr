@@ -10,6 +10,10 @@ modelo_disponivel <- function() {
   !is.null(caminho) && file.exists(caminho)
 }
 
+# O Rust monta o caminho com o separador da plataforma (`\` no Windows);
+# comparar caminhos com `file.path()`, que usa `/`, exige alinhar os dois lados.
+como_posix <- function(caminho) gsub("\\\\", "/", caminho)
+
 pular_sem_modelo <- function() {
   # O download do modelo é acesso à rede: fica fora do CRAN e do R CMD check.
   testthat::skip_on_cran()

@@ -9,7 +9,7 @@ test_that("obter_caminho_modelo acrescenta a versão em um diretório", {
   informacoes <- informacoes_do_modelo()
 
   expect_equal(
-    obter_caminho_modelo("/tmp/modelos/"),
+    como_posix(obter_caminho_modelo("/tmp/modelos/")),
     file.path("/tmp/modelos", informacoes$versao, informacoes$arquivo)
   )
 })
@@ -23,7 +23,10 @@ test_that("obter_caminho_modelo cai no cache sem argumento", {
 
   expect_type(caminho, "character")
   expect_length(caminho, 1)
-  expect_true(endsWith(caminho, file.path(informacoes$versao, informacoes$arquivo)))
+  expect_true(endsWith(
+    como_posix(caminho),
+    file.path(informacoes$versao, informacoes$arquivo)
+  ))
 })
 
 test_that("obter_caminho_modelo prioriza o argumento sobre a variável de ambiente", {
