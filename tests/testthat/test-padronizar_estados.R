@@ -61,3 +61,14 @@ test_that("não recicla valores do vetor de estados original", {
   expect_false(identical(resultado, rep("RIO DE JANEIRO", 3)))
   expect_equal(resultado, c(rep("RIO DE JANEIRO", 2), "ACRE"))
 })
+
+test_that("padroniza em formato codigo", {
+  expect_equal(padronizar_estados("MA", formato = "codigo"), "21")
+  expect_equal(padronizar_estados(21, formato = "codigo"), "21")
+  expect_equal(padronizar_estados("MARANHÃO", formato = "codigo"), "21")
+  expect_equal(padronizar_estados(NA, formato = "codigo"), NA_character_)
+})
+
+test_that("formato codigo lida com vetores vazios", {
+  expect_equal(padronizar_estados(character(0), formato = "codigo"), character(0))
+})

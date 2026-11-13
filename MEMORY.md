@@ -119,3 +119,39 @@ consumiu 95 s no `Rprof` e simulou uma regressão de 117 s → 136 s que não ex
 Conferir com `grep LIBDIR src/Makevars.win`. Para comparar versões: instalar a nova
 em release numa lib temporária (`R CMD INSTALL --library=/tmp/lib .`) e usar
 `library(enderecobr, lib.loc = ...)`, deixando o pacote instalado do usuário intacto.
+
+[LEARN:enderecobr] (2026-11-12) **O tamanho do `vendor.tar.xz` vem das
+dependências NÃO opcionais do `enderecobr_rs`, não dos opcionais.** Diagnóstico
+errado (e corrigido pelo Gabriel): eu concluí que "todo pacote do `Cargo.lock`
+precisa estar no vendor, inclusive opcional com feature desligada". Vale para o
+que está no lock, mas opcional desligado **não entra no lock**: o
+`Cargo.lock` do wrapper tem 206 pacotes e **zero** `polars`/`clap`, que são
+opcionais (`default = []`) e nunca foram vendorizados. O que entra é a árvore
+completa — inclusive de alvos que nem compilamos, como `js-sys` (wasm) — de toda
+dependência **não opcional**. Culpado real: `reqwest` era não opcional em
+0.6.1 → `rustls` → `aws-lc-sys` (69 MB de fonte), levando o vendor a **23 MB**.
+Com `reqwest` opcional (`download`) e compilado sem a feature: **53 pacotes /
+4,7 MB**. Podar o vendor à mão não funciona (`no matching package named aws-lc-rs
+... required by rustls`), então a saída é feature gate no manifesto.
+
+[LEARN:enderecobr] (2026-11-12) **`cargo vendor` sem lockfile resolve com todas
+as features; `cargo update` respeita as features ativas.** Foi o que me fez
+errar o diagnóstico acima: num teste com `serde` e `default-features = false`,
+o `cargo vendor` gerou um lock **com** `serde_derive` (opcional, feature
+desligada) e o build offline falhou ao podá-lo — conclusão que não vale para o
+caso real, cujo lock veio do `cargo update`. Ao medir impacto de vendor, gerar o
+lock primeiro (`cargo update`) e só então `cargo vendor`.
+
+[LEARN:enderecobr] (2026-11-12) **O binário `document` grava
+`../R/extendr-wrappers.R` relativo ao diretório de execução, não ao manifesto.**
+Rodar `cargo run --bin document` de dentro de `src/rust/` falha com
+`failed to write ../R/extendr-wrappers.R: No such file or directory` (ele
+resolve para `src/R/`). Certo → rodar de `src/`, como o Makevars faz:
+`cargo run --bin document --manifest-path=./rust/Cargo.toml --target-dir ./rust/target`.
+
+[LEARN:enderecobr] (2026-11-12) **`///` em `src/rust/src/lib.rs` vira roxygen em
+`R/extendr-wrappers.R`.** O gerador de wrappers copia os comentários de
+documentação como bloco `#'`, e aí `devtools::document()` cria um `.Rd` (e um
+alvo de `R CMD check`) por função interna `*_rs`. Errado → documentar o binding
+em Rust com `///`. Certo → usar `//`: a documentação de usuário fica só no
+roxygen dos arquivos `R/`, como no resto do pacote.

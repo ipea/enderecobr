@@ -17,7 +17,8 @@
 #' @param formato_estados Uma string. Como o estado padronizado deve ser
 #'   formatado. Por padrão, `"por_extenso"`, fazendo com que a função retorne o
 #'   nome dos estados por extenso. Se `"sigla"`, a função retorna a sigla dos
-#'   estados.
+#'   estados. Se `"codigo"`, a função retorna o código numérico do estado no
+#'   IBGE.
 #' @param formato_numeros Uma string. Como o número padronizado deve ser
 #'   formatado. Por padrão, `"character"`, fazendo com que a função retorne o
 #'   número como caractere. Se `"integer"`, a função retorna o número como
@@ -94,7 +95,7 @@ padronizar_enderecos <- function(
     checkmate::check_string(formato_estados),
     checkmate::check_names(
       formato_estados,
-      subset.of = c("por_extenso", "sigla")
+      subset.of = c("por_extenso", "sigla", "codigo")
     ),
     combine = "and"
   )

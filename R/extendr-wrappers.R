@@ -31,6 +31,28 @@ padronizar_ceps_rs <- function(x) .Call(wrap__padronizar_ceps_rs, x)
 
 padronizar_ceps_numericos_rs <- function(x) .Call(wrap__padronizar_ceps_numericos_rs, x)
 
+padronizar_ceps_lenientes_rs <- function(x) .Call(wrap__padronizar_ceps_lenientes_rs, x)
+
+normalizar_rs <- function(x) .Call(wrap__normalizar_rs, x)
+
+zerar_dado_faltante_rs <- function(x) .Call(wrap__zerar_dado_faltante_rs, x)
+
+numero_por_extenso_rs <- function(x) .Call(wrap__numero_por_extenso_rs, x)
+
+romano_para_inteiro_rs <- function(x) .Call(wrap__romano_para_inteiro_rs, x)
+
+estruturar_enderecos_rs <- function(enderecos, padronizar, probabilidades, modelo) .Call(wrap__estruturar_enderecos_rs, enderecos, padronizar, probabilidades, modelo)
+
+segmentar_enderecos_rs <- function(enderecos, probabilidades, modelo) .Call(wrap__segmentar_enderecos_rs, enderecos, probabilidades, modelo)
+
+estruturar_segmentos_rs <- function(segmentos, padronizar) .Call(wrap__estruturar_segmentos_rs, segmentos, padronizar)
+
+obter_caminho_modelo_rs <- function(modelo) .Call(wrap__obter_caminho_modelo_rs, modelo)
+
+tipos_de_segmento_rs <- function() .Call(wrap__tipos_de_segmento_rs)
+
+informacoes_do_modelo_rs <- function() .Call(wrap__informacoes_do_modelo_rs)
+
 novo_padronizador <- function(pares_subst = list()) .Call(wrap__novo_padronizador, pares_subst)
 
 obter_padronizador_logradouros <- function() .Call(wrap__obter_padronizador_logradouros)

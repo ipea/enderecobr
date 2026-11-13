@@ -8,7 +8,8 @@
 #'   padronizados.
 #' @param formato Uma string. Como o resultado padronizado deve ser formatado.
 #'   Por padrão, `"por_extenso"`, fazendo com que a função retorne o nome dos
-#'   estados por extenso. Se `"sigla"`, a função retorna a sigla dos estados.
+#'   estados por extenso. Se `"sigla"`, a função retorna a sigla dos estados. Se
+#'   `"codigo"`, a função retorna o código numérico do estado no IBGE.
 #'
 #' @return Um vetor de caracteres com os estados padronizados.
 #'
@@ -32,6 +33,7 @@
 #' estados <- c(21, NA)
 #' padronizar_estados(estados)
 #' padronizar_estados(estados, formato = "sigla")
+#' padronizar_estados(estados, formato = "codigo")
 #'
 #' @export
 padronizar_estados <- function(estados, formato = "por_extenso") {
@@ -42,7 +44,10 @@ padronizar_estados <- function(estados, formato = "por_extenso") {
   )
   checkmate::assert(
     checkmate::check_string(formato),
-    checkmate::check_names(formato, subset.of = c("por_extenso", "sigla")),
+    checkmate::check_names(
+      formato,
+      subset.of = c("por_extenso", "sigla", "codigo")
+    ),
     combine = "and"
   )
 

@@ -1,10 +1,44 @@
-# enderecobr dev
+# enderecobr 0.7.0
 
 ## Notas
 
+- O pacote passa a usar a crate `enderecobr_rs` v0.7.4.
 - Pequena melhora de performance na função `padronizar_enderecos()` para 
 bases  de dados grandes (acima de 1 milhão). Performance ganha por fazer 
 dedup  ainda dentro do R nos campos de estado, municipio e numero.
+
+## Novas funções
+
+- `estruturar_enderecos()` separa endereços em texto livre nos campos
+  logradouro, número, complemento, bairro e CEP, com o modelo probabilístico
+  (CRF) do `enderecobr_rs`. O modelo não faz parte do pacote: é baixado pelo
+  próprio R na primeira chamada (`utils::download.file()`) e guardado no cache
+  do sistema. O caminho pode ser controlado com o argumento
+  `modelo`, com a variável de ambiente `ENDERECOBR_MODELO` ou pelo cache, e o
+  download pode ser desligado com `ENDERECOBR_MODELO_SEM_DOWNLOAD`.
+  `obter_modelo()`, `obter_caminho_modelo()` e `informacoes_do_modelo()` dão
+  acesso a esse arquivo.
+- `estruturar_enderecos()` e `segmentar_enderecos()` segmentam cada endereço
+  repetido uma única vez: bases com muitos endereços iguais ficam
+  proporcionalmente mais rápidas.
+- `segmentar_enderecos()` devolve os trechos de cada endereço com o seu tipo,
+  sem distribuí-los nos campos, e `estruturar_segmentos()` reagrupa trechos já
+  segmentados sem rodar o modelo de novo ([issue
+  #77](https://github.com/ipea/enderecobr/issues/77)). `tipos_de_segmento()`
+  lista os tipos possíveis.
+- Novas funções auxiliares: `normalizar()`, `e_dado_faltante()`,
+  `zerar_dado_faltante()`, `padronizar_metaphone()`, `numero_por_extenso()` e
+  `romano_para_inteiro()`.
+
+## Adições e mudanças de padronização
+
+- `padronizar_ceps()` ganhou os argumentos `formato`, que aceita `"integer"`
+  para devolver os CEPs sem o traço, ocupando menos memória ([issue
+  #76](https://github.com/ipea/enderecobr/issues/76)), e `leniente`, que
+  padroniza descartando o que não for dígito em vez de reportar erro.
+- `padronizar_estados()` ganhou o formato `"codigo"`, que devolve o código
+  numérico do estado no IBGE, também disponível no argumento `formato_estados`
+  da `padronizar_enderecos()`.
 
 # enderecobr 0.6.1
 

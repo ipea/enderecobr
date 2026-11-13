@@ -4,8 +4,17 @@
 #' *Detalhes* para mais informações sobre a padronização.
 #'
 #' @param ceps Um vetor de caracteres ou números. Os CEPs a serem padronizados.
+#' @param formato Uma string. Como o resultado padronizado deve ser formatado.
+#'   Por padrão, `"character"`, fazendo com que a função retorne os CEPs
+#'   separados por traço (`"22290-140"`). Se `"integer"`, a função retorna os
+#'   CEPs como números inteiros, sem o traço (`22290140`), o que ocupa menos
+#'   memória em bases grandes.
+#' @param leniente Um logical. Se os CEPs devem ser padronizados tolerando
+#'   caracteres inválidos, em vez de reportar erro. Muda apenas a tolerância da
+#'   leitura: o `formato` continua valendo. Por padrão, `FALSE`.
 #'
-#' @return Um vetor de caracteres com os CEPs padronizados.
+#' @return Um vetor de caracteres com os CEPs padronizados ou, quando
+#'   `formato = "integer"`, um vetor de inteiros.
 #'
 #' @section Detalhes:
 #' Operações realizadas durante a padronização:
@@ -14,35 +23,80 @@
 #' - adição de zeros à esquerda, se o input contiver menos de 8 dígitos;
 #' - remoção de espaços em branco, pontos e vírgulas;
 #' - adição de traço separando o radical (5 primeiros dígitos) do sufixo (3
-#' últimos digitos).
+#' últimos digitos), apenas quando `formato = "character"`.
+#'
+#' Com `leniente = TRUE` a função nunca reporta erro: tudo o que não for dígito é
+#' descartado, os dígitos que passarem de 8 são descartados do fim e o que faltar
+#' é preenchido com zeros à esquerda. Use quando a fonte dos dados é sabidamente
+#' suja e o objetivo é aproveitar o que der, em vez de garantir que todo CEP seja
+#' válido. Como o preenchimento é com zeros, um valor sem nenhum dígito vira
+#' `"00000-000"` — vale conferir esses casos depois.
 #'
 #' @examples
 #' ceps <- c("22290-140", "22.290-140", "22290 140", "22290140")
 #' padronizar_ceps(ceps)
+#' padronizar_ceps(ceps, formato = "integer")
 #'
 #' ceps <- c(22290140, 1000000, NA)
 #' padronizar_ceps(ceps)
 #'
+#' # tolerando caracteres inválidos
+#' padronizar_ceps(c("a123b45  6", "RUA"), leniente = TRUE)
+#'
 #' @export
-padronizar_ceps <- function(ceps) {
+padronizar_ceps <- function(ceps, formato = "character", leniente = FALSE) {
   checkmate::assert(
     checkmate::check_character(ceps),
     checkmate::check_numeric(ceps),
     combine = "or"
   )
+  checkmate::assert(
+    checkmate::check_string(formato),
+    checkmate::check_names(
+      formato,
+      subset.of = c("character", "integer")
+    ),
+    combine = "and"
+  )
+  checkmate::assert_logical(leniente, any.missing = FALSE, len = 1)
+
+  if (leniente) {
+    ceps_padrao <- padronizar_ceps_lenientes_rs(enc2utf8(texto_do_cep(ceps)))
+
+    if (formato == "integer") return(cep_para_inteiro(ceps_padrao))
+
+    return(ceps_padrao)
+  }
 
   if (is.numeric(ceps)) {
     ceps_padrao <- padronizar_ceps_numericos_rs(as.integer(ceps))
+    checa_se_digitos_demais(ceps_padrao)
   } else {
-    ceps_padrao <- padronizar_ceps_rs(ceps)
+    ceps_padrao <- padronizar_ceps_rs(enc2utf8(ceps))
+
     checa_se_letra_presente(ceps_padrao)
+    checa_se_digitos_demais(ceps_padrao)
   }
 
-  checa_se_digitos_demais(ceps_padrao)
+  if (formato == "integer") return(cep_para_inteiro(ceps_padrao))
+
   ceps_padrao
 }
 
 # checks ------------------------------------------------------------------
+
+# `as.character()` escreve números redondos em notação científica ("1e+07"), o
+# que faria o modo leniente aproveitar só o "107". Também mantém o `NA` como
+# `NA`, em vez de virar o texto "NA".
+texto_do_cep <- function(ceps) {
+  if (!is.numeric(ceps)) return(ceps)
+
+  ifelse(is.na(ceps), NA_character_, sprintf("%.0f", trunc(ceps)))
+}
+
+cep_para_inteiro <- function(ceps_padrao) {
+  as.integer(gsub("-", "", ceps_padrao, fixed = TRUE))
+}
 
 checa_se_letra_presente <- function(ceps) {
   possui_letras <- ceps == "Erro: CEP com caracteres inv\u00e1lidos"

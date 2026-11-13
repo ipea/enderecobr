@@ -4,13 +4,24 @@
 \alias{padronizar_ceps}
 \title{Padronizar CEPs}
 \usage{
-padronizar_ceps(ceps)
+padronizar_ceps(ceps, formato = "character", leniente = FALSE)
 }
 \arguments{
 \item{ceps}{Um vetor de caracteres ou números. Os CEPs a serem padronizados.}
+
+\item{formato}{Uma string. Como o resultado padronizado deve ser formatado.
+Por padrão, \code{"character"}, fazendo com que a função retorne os CEPs
+separados por traço (\code{"22290-140"}). Se \code{"integer"}, a função retorna os
+CEPs como números inteiros, sem o traço (\code{22290140}), o que ocupa menos
+memória em bases grandes.}
+
+\item{leniente}{Um logical. Se os CEPs devem ser padronizados tolerando
+caracteres inválidos, em vez de reportar erro. Muda apenas a tolerância da
+leitura: o \code{formato} continua valendo. Por padrão, \code{FALSE}.}
 }
 \value{
-Um vetor de caracteres com os CEPs padronizados.
+Um vetor de caracteres com os CEPs padronizados ou, quando
+\code{formato = "integer"}, um vetor de inteiros.
 }
 \description{
 Padroniza um vetor de caracteres ou números representando CEPs. Veja a seção
@@ -24,15 +35,26 @@ Operações realizadas durante a padronização:
 \item adição de zeros à esquerda, se o input contiver menos de 8 dígitos;
 \item remoção de espaços em branco, pontos e vírgulas;
 \item adição de traço separando o radical (5 primeiros dígitos) do sufixo (3
-últimos digitos).
+últimos digitos), apenas quando \code{formato = "character"}.
 }
+
+Com \code{leniente = TRUE} a função nunca reporta erro: tudo o que não for dígito é
+descartado, os dígitos que passarem de 8 são descartados do fim e o que faltar
+é preenchido com zeros à esquerda. Use quando a fonte dos dados é sabidamente
+suja e o objetivo é aproveitar o que der, em vez de garantir que todo CEP seja
+válido. Como o preenchimento é com zeros, um valor sem nenhum dígito vira
+\code{"00000-000"} — vale conferir esses casos depois.
 }
 
 \examples{
 ceps <- c("22290-140", "22.290-140", "22290 140", "22290140")
 padronizar_ceps(ceps)
+padronizar_ceps(ceps, formato = "integer")
 
 ceps <- c(22290140, 1000000, NA)
 padronizar_ceps(ceps)
+
+# tolerando caracteres inválidos
+padronizar_ceps(c("a123b45  6", "RUA"), leniente = TRUE)
 
 }

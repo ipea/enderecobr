@@ -10,23 +10,38 @@ development:
 reference:
   - title: "Padronização de múltiplos campos simultaneamente"
   - contents:
-    - padronizar_enderecos
-    - padronizar_logradouros_completos
+      - padronizar_enderecos
+      - padronizar_logradouros_completos
+  - title: "Separação e estruturação de endereços"
+  - contents:
+      - estruturar_enderecos
+      - segmentar_enderecos
+      - estruturar_segmentos
+      - tipos_de_segmento
+      - obter_modelo
+      - obter_caminho_modelo
+      - informacoes_do_modelo
   - title: "Padronização de campos individuais"
   - contents:
-    - padronizar_estados
-    - padronizar_municipios
-    - padronizar_bairros
-    - padronizar_ceps
-    - padronizar_logradouros
-    - padronizar_numeros
-    - padronizar_complementos
-    - padronizar_tipos_de_logradouro
+      - padronizar_estados
+      - padronizar_municipios
+      - padronizar_bairros
+      - padronizar_ceps
+      - padronizar_logradouros
+      - padronizar_numeros
+      - padronizar_complementos
+      - padronizar_tipos_de_logradouro
   - title: "Funções auxiliares"
   - contents:
-    - correspondencia_campos
-    - correspondencia_logradouro
+      - correspondencia_campos
+      - correspondencia_logradouro
+      - normalizar
+      - e_dado_faltante
+      - zerar_dado_faltante
+      - padronizar_metaphone
+      - numero_por_extenso
+      - romano_para_inteiro
   - title: "Tabelas de códigos"
   - contents:
-    - codigos_municipios
-    - codigos_estados
+      - codigos_municipios
+      - codigos_estados
