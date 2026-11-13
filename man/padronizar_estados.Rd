@@ -12,7 +12,8 @@ padronizados.}
 
 \item{formato}{Uma string. Como o resultado padronizado deve ser formatado.
 Por padrão, \code{"por_extenso"}, fazendo com que a função retorne o nome dos
-estados por extenso. Se \code{"sigla"}, a função retorna a sigla dos estados.}
+estados por extenso. Se \code{"sigla"}, a função retorna a sigla dos estados. Se
+\code{"codigo"}, a função retorna o código numérico do estado no IBGE.}
 }
 \value{
 Um vetor de caracteres com os estados padronizados.
@@ -45,5 +46,6 @@ padronizar_estados(estados)
 estados <- c(21, NA)
 padronizar_estados(estados)
 padronizar_estados(estados, formato = "sigla")
+padronizar_estados(estados, formato = "codigo")
 
 }

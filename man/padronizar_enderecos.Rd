@@ -31,7 +31,8 @@ ser os mesmos nomes dos parâmetros da função \code{correspondencia_campos()}.
 \item{formato_estados}{Uma string. Como o estado padronizado deve ser
 formatado. Por padrão, \code{"por_extenso"}, fazendo com que a função retorne o
 nome dos estados por extenso. Se \code{"sigla"}, a função retorna a sigla dos
-estados.}
+estados. Se \code{"codigo"}, a função retorna o código numérico do estado no
+IBGE.}
 
 \item{formato_numeros}{Uma string. Como o número padronizado deve ser
 formatado. Por padrão, \code{"character"}, fazendo com que a função retorne o
